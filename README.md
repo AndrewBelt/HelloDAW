@@ -5,7 +5,7 @@
 It's like the "Hello, world!" of DAW plugins.
 Actually, it's like [TodoMVC](http://todomvc.com/), except with audio plugin formats instead of JavaScript frameworks.
 
-Most importantly, this project attempts to reduce the time to build your first plugin from hours of frustration to hopefully 1 minute (`git clone ...`, `cd <project>`, read README, `make`).
+Most importantly, this project attempts to reduce the time to build your first plugin from hours of frustration to hopefully 2 minutes (`git clone ...`, `cd HelloDAW/...`, read `README.md`, and `make`).
 
 
 ### Includes
