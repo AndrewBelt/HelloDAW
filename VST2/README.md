@@ -1,6 +1,6 @@
 # HelloVST2
 
-## Building
+## Development environment
 
 ### Mac
 
@@ -17,7 +17,8 @@ Or with the MinGW 32-bit shell
 
 	pacman -S make mingw-w64-i386-gcc
 
----
+
+## Building
 
 Download the [VST3 SDK](https://www.steinberg.net/en/company/developers.html), and move the `VST2_SDK` folder to this directory.
 
