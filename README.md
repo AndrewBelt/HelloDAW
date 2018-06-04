@@ -32,7 +32,7 @@ The plugin should be loadable in a plugin host (e.g. DAW) capable of loading its
 - 8 inputs (4 stereo inputs) if possible, otherwise 2 inputs
 - 8 outputs (4 stereo outputs) if possible, otherwise 2 outputs
 - 8 automation parameters if possible
-- No GUI. Use the host's automation parameters if possible.
+- No GUI. Take advantage of the host's built-in sliders provided for GUI-less plugins if possible.
 
 When running, the plugin should implement the following I/O.
 
@@ -47,17 +47,11 @@ No IDEs like Xcode or Visual Studio should be used.
 Instructions should be provided in a `README.md` file for setting up the development environment and acquiring relevant SDK files.
 
 
-## Using
+## Usage
 
-Each *HelloDAW* project attempts to obtain a standard unified low-level API using each plugin's SDK.
+Each *HelloDAW* project attempts to obtain a standard unified low-level starting point using each plugin's SDK.
 
-This is great for forking and writing your own plugin if you prefer *simple* and *low-level* to *complex* and *convenient*.
-
-Some things you will need to do
-- process the 3-byte MIDI messages yourself
-- handle your own polyphony by managing multiple MIDI notes and voices
-
-If you enjoy that kind of thing, these boilerplate projects are for you!
+This is great for forking and writing your own plugin if you prefer *simple* and *low-level* over *complex* and *convenient*.
 
 
 ## License
@@ -65,5 +59,4 @@ If you enjoy that kind of thing, these boilerplate projects are for you!
 All code and documentation in this repository is released into the public domain ([CC0](https://creativecommons.org/publicdomain/zero/1.0/)).
 No credit is needed, but it would be nice to hear if you've released a plugin with help from this project.
 
-However, note that plugin SDKs typically have more restrictive licenses.
-They are not included in this repository.
+However, note that plugin SDKs typically have more restrictive licenses, but they are not included in this repository.
