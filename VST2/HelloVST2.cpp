@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include "public.sdk/source/vst2.x/audioeffectx.h"
 
 
-static const NUM_INPUTS = 8;
-static const NUM_OUTPUTS = 8;
-static const NUM_PARAMS = 8;
+static const int NUM_INPUTS = 8;
+static const int NUM_OUTPUTS = 8;
+static const int NUM_PARAMS = 8;
 
 
 class HelloVST2 : public AudioEffectX {
@@ -38,6 +39,7 @@ public:
 
 	void setParameter(VstInt32 index, float value) override {
 		params[index] = value;
+		printf("Set parameter %d: %f\n", index, value);
 	}
 
 	float getParameter(VstInt32 index) override {
@@ -53,7 +55,7 @@ public:
 	}
 
 	void getParameterName(VstInt32 index, char *text) override {
-		snprintf(text, kVstMaxParamStrLen, "Parameter %d", index);
+		snprintf(text, kVstMaxParamStrLen, "%d", index);
 	}
 
 	VstInt32 getVendorVersion() override {
@@ -65,16 +67,19 @@ public:
 			VstEvent *event = events->events[i];
 			if (event->type == kVstMidiType) {
 				VstMidiEvent *midiEvent = (VstMidiEvent*) event;
-				printf("MIDI: %02x %02x %02x\n", midiEvent->midiData[0], midiEvent->midiData[1], midiEvent->midiData[2]);
+				uint8_t status = midiEvent->midiData[0];
+				uint8_t data1 = midiEvent->midiData[0];
+				uint8_t data2 = midiEvent->midiData[0];
+				printf("MIDI: %02x %02x %02x\n", status, data1, data2);
 			}
 		}
 		return 0;
 	}
 
 	void processReplacing(float **inputs, float **outputs, VstInt32 sampleFrames) override {
-		VstTimeInfo *timeInfo = getTimeInfo(0);
-		if (timeInfo->flags & kVstPpqPosValid)
-			printf("Transport position (in quarter notes): %f\n", timeInfo->ppqPos);
+		// VstTimeInfo *timeInfo = getTimeInfo(0);
+		// if (timeInfo->flags & kVstPpqPosValid)
+		// 	printf("Transport position (in quarter notes): %f\n", timeInfo->ppqPos);
 
 		// Apply gain of 0.5 to all samples
 		for (int i = 0; i < sampleFrames; i++) {
