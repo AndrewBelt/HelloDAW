@@ -2,6 +2,7 @@ VST2_SDK ?= VST2_SDK
 TARGET := HelloVST2
 
 FLAGS += -g
+FLAGS += -MMD -MP
 FLAGS += -O3 -march=nocona -ffast-math
 FLAGS += -Wall -Wextra -Wno-unused-parameter
 FLAGS += -fPIC
@@ -88,6 +89,9 @@ clean:
 
 
 OBJECTS := $(patsubst %, build/%.o, $(SOURCES)) $(OBJECTS)
+DEPENDENCIES := $(patsubst %, build/%.d, $(SOURCES))
+
+-include $(DEPENDENCIES)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
