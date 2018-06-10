@@ -7,12 +7,12 @@ static const int NUM_OUTPUTS = 8;
 static const int NUM_PARAMS = 8;
 
 
-class HelloVST2 : public AudioEffectX {
+class HelloVST : public AudioEffectX {
 private:
 	float params[NUM_PARAMS];
 
 public:
-	HelloVST2(audioMasterCallback audioMaster) : AudioEffectX(audioMaster, 0, NUM_PARAMS) {
+	HelloVST(audioMasterCallback audioMaster) : AudioEffectX(audioMaster, 0, NUM_PARAMS) {
 		isSynth(true);
 		setNumInputs(NUM_INPUTS);
 		setNumOutputs(NUM_OUTPUTS);
@@ -28,12 +28,12 @@ public:
 	}
 
 	bool getEffectName(char *name) override {
-		snprintf(name, kVstMaxEffectNameLen, "HelloVST2");
+		snprintf(name, kVstMaxEffectNameLen, "HelloVST");
 		return true;
 	}
 
 	bool getProductString(char *text) override {
-		snprintf(text, kVstMaxVendorStrLen, "HelloVST2");
+		snprintf(text, kVstMaxVendorStrLen, "HelloVST");
 		return true;
 	}
 
@@ -92,5 +92,5 @@ public:
 
 
 AudioEffect *createEffectInstance (audioMasterCallback audioMaster) {
-	return new HelloVST2(audioMaster);
+	return new HelloVST(audioMaster);
 }

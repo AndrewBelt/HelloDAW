@@ -1,5 +1,5 @@
 VST2_SDK ?= VST2_SDK
-TARGET := HelloVST2
+TARGET := HelloVST
 
 FLAGS += -g
 FLAGS += -MMD -MP
@@ -46,7 +46,7 @@ endif
 CFLAGS += $(FLAGS)
 CXXFLAGS += $(FLAGS)
 
-SOURCES += HelloVST2.cpp
+SOURCES += HelloVST.cpp
 SOURCES += $(VST2_SDK)/public.sdk/source/vst2.x/audioeffect.cpp
 SOURCES += $(VST2_SDK)/public.sdk/source/vst2.x/audioeffectx.cpp
 SOURCES += $(VST2_SDK)/public.sdk/source/vst2.x/vstplugmain.cpp
