@@ -25,33 +25,36 @@ Pull-requests are welcome and will be merged if I can follow your instructions a
 
 ## The standard
 
-Each plugin project is very simple and does nothing whatsoever.
+Each plugin project is very simple and does nothing except prove that it works.
 
 The plugin should be loadable in a plugin host (e.g. DAW) capable of loading its format. The plugin should feature
 
 - 8 inputs (4 stereo inputs) if possible, otherwise 2 inputs
 - 8 outputs (4 stereo outputs) if possible, otherwise 2 outputs
 - 8 automation parameters if possible
-- No GUI. Take advantage of the host's built-in sliders provided for GUI-less plugins if possible.
+- No custom GUI. The plugin should use the host's built-in GUI if possible.
 
 When running, the plugin should implement the following I/O.
 
 - print incoming MIDI message bytes to `stdout`
 - print the state of automation parameters (whenever they change, or upon each audio block)
-- In a double `for` loop for each frame and channel, apply a gain of 0.5 to the input buffer and set it to the output buffer.
+- In a double `for` loop for each frame and channel, apply a gain of 0.5 to the input buffer and write to the output buffer.
 
 
 The project should have a single `Makefile` and should be built by running `make` in the project directory.
-No IDEs like Xcode or Visual Studio should be used.
+No IDEs like Xcode or Visual Studio should be used if possible.
 
 Instructions should be provided in a `README.md` file for setting up the development environment and acquiring relevant SDK files.
 
 
 ## Usage
 
-Each *HelloDAW* project attempts to obtain a standard unified low-level starting point using each plugin's SDK.
+Each *HelloDAW* project attempts to obtain a low-level starting point using each plugin's SDK.
 
 This is great for forking and writing your own plugin if you prefer *simple* and *low-level* over *complex* and *convenient*.
+
+The goal of *HelloDAW* is to work out of the box.
+If the build breaks for you, create an issue with all relevant information.
 
 
 ## License
