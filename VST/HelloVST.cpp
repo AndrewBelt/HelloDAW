@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "public.sdk/source/vst2.x/audioeffectx.h"
 
 
