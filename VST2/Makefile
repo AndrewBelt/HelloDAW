@@ -39,7 +39,9 @@ ifdef ARCH_WIN
 	TARGET := $(TARGET).dll
 endif
 ifdef ARCH_LIN
-$(error Build not available on Linux, although it's possible. If you can figure it out, send a PR)
+	FLAGS += -D__cdecl=""
+	LDFLAGS += -shared
+	TARGET := $(TARGET).so
 endif
 
 
